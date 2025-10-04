@@ -1,54 +1,27 @@
 # cc-crash-course
 
-Let's build a web app to manage online activities for our LEAD FORWARD members using **InstantDB** as the backend.
+Let's build a web app to manage online activities for our NGO members.
 
 Help me think through how to break this into iterative pieces and write a plan.md.
 
 ## Functional Requirements:
 
-### 1. Authentication
-- Login with Google OAuth (via InstantDB Auth)
-- InstantDB handles auth tokens and session management
-
-### 2. Single Activity Feed
-- One main feed showing all posts chronologically
-- View post title, author, timestamp, and content
-- Real-time updates as new posts are created
-- No filtering/sorting initially (just chronological)
-- (Skip "Popular" sorting, advanced filters)
-
-### 3. Minimal Content Organization
-- 2-3 basic channels/categories (e.g., "General", "Knowledge Bank", "Q&A")
-- Simple channel navigation
-- Post to specific channel
-- (Skip sub-categories, tags, or complex hierarchies)
-
-### 4. Basic Posting & Interaction
-- Create text posts with title and body
-- Comment on posts
-- View post details page
-- Optimistic updates via InstantDB
-- (Skip rich text editor, file uploads, reactions/likes)
-
-### 5. Simple User Profiles
-- Username and avatar from Google OAuth
-- View user's post history
-- (Skip bio, role badges, achievements, detailed profiles)
+- There should be like a personas like anonymous user, members and also admins. 
+- The admin can initiate challenges and the members can sign up. 
+- A member can gain scores after completing tasks within a challenge, Admin can approve or reject with a reason. 
+- Members and admin can publish blogs. other users can like and comments.
+- There should be a feed view where anonymous users can see the recent blogs and also the challenges.
+- There should be a leaderboard view where we list all the members with their scores.
 
 ## Non-functional Requirements:
 
-- Design the **InstantDB schema** to properly handle:
-  - User data (synced from Google OAuth)
-  - Posts with channel relationships
-  - Comments with post relationships
-  - Permissions rules for read/write access
-- Define **InstantDB permission rules** to control who can create/edit/delete content
-- Develop comprehensive unit tests for React components and business logic
-- Create end-to-end (E2E) tests to validate core user journeys
-- Use Git for all version control throughout the project
-- Use ESLint for linting
-- Use npm as the designated package manager
-- Use descriptive commit messages for all code changes
+- Design the db schema to support multi-tenancy for multiple communities.
+- Develop comprehensive unit tests for React components and business logic.
+- Create end-to-end (E2E) tests to validate core user journeys.
+- Use Git for all version control throughout the project.
+- Use ESLint for linting.
+- Use npm as the designated package manager.
+- Use descriptive commit messages for all code changes.
 
 ## Design:
 
@@ -65,15 +38,15 @@ Help me think through how to break this into iterative pieces and write a plan.m
 - Tailwind CSS v4
 - shadcn/ui components
 - ESLint 9
+- Cloudflare Pages
 
 ### Backend:
-- **InstantDB** (handles database, real-time sync, auth, permissions)
-- No separate backend server needed
-- Schema defined in `instant.schema.ts`
+- Cloudflare Workers
+- Cloudflare Workers KV
+- Cloudflare R2
 
 ### Infra:
 - GitHub (version control)
-- Cloudflare Pages (frontend hosting)
-- InstantDB Cloud (managed database)
+- Cloudflare Workers, KV and R2
 
 Check off items in the plan as we accomplish them as a todo list. If you have open questions that require my input, add those in the plan as well.
